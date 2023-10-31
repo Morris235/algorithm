@@ -2,6 +2,8 @@
 
 <도서> 이것이 자료구조+알고리즘이다 with C 언어를 바탕으로 작성한 알고리즘 공부용 repository 입니다.
 
+<img src="./images/book.jpeg">
+
 # Part 00 목차
 
 ## Chapter 00 알아두면 쓸 데 있는 자료구조와 알고리즘
