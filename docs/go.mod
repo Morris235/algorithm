@@ -1,3 +1,3 @@
-module github.com/morris235/algorithm
+module docs
 
 go 1.21.3
