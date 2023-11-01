@@ -1,8 +1,9 @@
 # 프로젝트 소개
 
 <도서> 이것이 자료구조+알고리즘이다 with C 언어를 바탕으로 작성한 알고리즘 공부용 repository 입니다.
+책의 내용은 https://morris235.github.io/algorithms 에 정리 합니다.
 
-<img src="./images/book.jpeg">
+<img src="./images/book_cover.jpeg">
 
 # Part 00 목차
 
