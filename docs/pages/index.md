@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Morris's Algorithm Docs
+title: Docsy Jekyll Theme
 permalink: /
 ---
 
