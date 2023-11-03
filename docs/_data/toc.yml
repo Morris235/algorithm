@@ -1,25 +1,86 @@
-- title: Documentation
-  url: docs
+# - title: Documentation
+#   url: docs
+#   links:
+#     - title: "Getting Started"
+#       url: "docs/getting-started"
+#       children:
+#         - title: Features
+#           url: "docs/getting-started#getting-started"
+#         - title: Development
+#           url: "docs/getting-started#development"
+#         - title: Customization
+#           url: "docs/getting-started#customization"
+#     - title: Versioning
+#       url: "docs/versioning"
+#     - title: "About"
+#       url: "about"
+#     - title: "News"
+#       url: "news"
+
+- title: 자료구조
+  url: data-structure-doc
   links:
-    - title: "Getting Started"
+    - title: 리스트 ADT
       url: "docs/getting-started"
       children:
-        - title: Features
+        - title: 리스트의 개념
           url: "docs/getting-started#getting-started"
-        - title: Development
+        - title: 리스트와 배열의 비교
           url: "docs/getting-started#development"
-        - title: Customization
-          url: "docs/getting-started#customization"
-    - title: Versioning
-      url: "docs/versioning"
-    - title: "About"
-      url: "about"
-    - title: "News"
-      url: "news"
-- title: "Extras"
-  url: "docs/extras"
+    # 만든 포스트의 url을 지정해야 열린다.
+    # - title: 리스트 ADT
+    #   url: "data-structure-doc/list-adt"
+    #   children:
+    #     - title: 리스트의 개념
+    #       url: "data-structure-doc/list-adt#concept"
+    #     - title: 리스트와 배열 비교
+    #       url: "data-structure-doc/list-adt#list-and-array"
+    - title: 링크드 리스트
+      url: "data-structure-doc/getting-started#development"
+    - title: 더블 링크드 리스트
+      url: "data-structure-doc/getting-started#customization"
+    - title: 환형 링크드 리스트
+      url: "data-structure-doc/getting-started#customization"
+    - title: 스택
+      url: "data-structure-doc/getting-started#customization"
+    - title: 큐
+      url: "data-structure-doc/getting-started#customization"
+    - title: 스택
+      url: "data-structure-doc/getting-started#customization"
+    - title: 트리
+      url: "data-structure-doc/getting-started#customization"
+
+- title: 알고리즘
+  url: algorithm-doc
   links:
-    - title: Quizzes
-      url: "docs/extras/example-quiz"
-    - title: Tags Page
-      url: "tags"
+    - title: 정렬
+      url: "algorithm-doc/getting-started#getting-started"
+    - title: 탐색
+      url: "algorithm-doc/getting-started#development"
+    - title: 우선순위 큐와 힙
+      url: "algorithm-doc/getting-started#customization"
+    - title: 해시 테이블
+      url: "algorithm-doc/getting-started#customization"
+    - title: 그래프
+      url: "algorithm-doc/getting-started#customization"
+    - title: 문자열 탐색
+      url: "algorithm-doc/getting-started#customization"
+    - title: 알고리즘 설계 기법
+      url: "algorithm-doc/getting-started#customization"
+    - title: 분할 정복
+      url: "algorithm-doc/getting-started#customization"
+    - title: 동적 계획법
+      url: "algorithm-doc/getting-started#customization"
+    - title: 탐욕 알고리즘
+      url: "algorithm-doc/getting-started#customization"
+    - title: 백트래킹
+      url: "algorithm-doc/getting-started#customization"
+
+
+# - title: "Extras"
+#   url: "docs/extras"
+#   links:
+#     - title: Quizzes
+#       url: "docs/extras/example-quiz"
+#     - title: Tags Page
+#       url: "tags"
