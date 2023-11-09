@@ -130,7 +130,44 @@ void SLL_DestroyNode(Node* Node)
 ## 노드 추가 연산
 
 노드 추가는 링크드 리스트의 테일 노드 뒤에 새로운 노드를 만들어 연결하는 연산이다.<br/>
-작성중...
+
+![Node Img]({{ site.baseurl }}/assets/img/structure/list/insert_node.png)
+
+SLL_CreateNode() 함수를 이용하여 자유 저장소에 노드를 생성한 다음, 새로 생성한 노드의 주소를 테일의 NextNode 포인터에 저장한다.
+노드의 추가 연산을 처리하는 SLL_AppendNOde() 함수는 다음과 같이 구현할수 있다.
+
+{% highlight c++ %}
+void SLL_AppendNOde(Node** Head, Node* NewNode)
+{
+  // 헤드 노드가 NULL이라면 새로운 노드가 Head가 된다.
+  if ( (*Head) == NULL ) )
+  {
+    *Head = NewNode;
+  }
+  else 
+  {
+    // 테일을 찾아 NewNode를 연결한다.
+    Node* Tail = (*Head);
+    while (Tail->NextNode != NULL)
+    {
+      Tail = Tail->NextNode;
+    }
+
+    Tail->NextNode = NewNode;
+  }
+}
+{% endhighlight %}
+
+이렇게 구현한 SLL_ApendNode() 함수는 다음과 같이 사용한다.
+
+{% highlight c++ %}
+Node* List = NULL;
+Node* NewNode = NULL;
+NewNode = SLL_CreateNode( 117 ); // 자유 저장소에 노드 생성
+SLL_AppendNOde( &List, NewNode ); // 생성한 노드를 List에 추가
+NewNode = SLL_CreateNode( 119 ); // 자유 저장소에 또 다른 노드 생성
+SLL_AppendNode( &List, NewNode ); // 생성한 노드를 List에 추가
+{% endhighlight %}
 
 <!-- ### Search
 
