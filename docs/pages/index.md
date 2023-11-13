@@ -6,13 +6,13 @@ permalink: /
 
 # ALGORITHM DOCS 소개
 
-이 문서는 저 개인의 공부용도로 작성 하였습니다. <br/>
-도서 [이것이 자료구조+알고리즘이다 with C](https://m.hanbit.co.kr/media/books/book_view.html?p_code=B9034896671){:target="_blank"}를 바탕으로 작성중이지만 이 문서에서는 책의 모든 내용을 챕터마다 따라가며 완전히 다루진 않습니다. 이 문서가 책의 내용을 이해 하는데 도움이 될 수 있는 보조적인 정보를 제공하길 기대합니다. <br/>
+**이 문서는 저 개인의 공부용으로 작성 하였습니다.** <br/>
+도서 [이것이 자료구조+알고리즘이다 with C](https://m.hanbit.co.kr/media/books/book_view.html?p_code=B9034896671){:target="_blank"}를 바탕으로 작성중이지만 이 문서에서는 책의 모든 내용을 챕터마다 따라가며 완전히 다루진 않습니다. <br/>
 따라서 더 깊고 검수된 내용을 원하시는 분들은 해당 [링크](https://m.hanbit.co.kr/media/books/book_view.html?p_code=B9034896671){:target="_blank"}를 통해 책을 구매하여 읽어 보시면 되겠습니다. <br/>
 
 이 문서는 제가 판단하기에 중요한 내용을 정리하고 요약하여 작성중 입니다. 그러므로 보완해야 하거나 좀 더 나은 아이디어가 있으시다면 언제든 오른쪽 상단 메뉴에 <a href="{{ site.repo }}/issues/new?labels={% if page.editable %}{{ page.editable }}{% else %}question{% endif %}&title=Question:&body=Question on: {{ site.repo }}/tree/master/{{ page.path }}" target="_blank"><i class="fab fa-github fa-fw"></i> 이 문서에 이슈작성 하기</a>를 클릭하여 이슈를 남겨주시면 감사하겠습니다 <br/>
 
-궁극적으로 이 문서는 누구든 알고리즘의 기초를 이해하고, 익히 알려진 알고리즘들을 다루면서 업무에 도움이 되기를 바라며 작성했습니다.
+<!-- 궁극적으로 이 문서는 누구든 알고리즘의 기초를 이해하고, 익히 알려진 알고리즘들을 다루면서 업무에 도움이 되기를 바라며 작성했습니다. -->
 
 ![알고리즘 이미지 ⓒ 픽사베이](assets/img/algorithm.png)
 
