@@ -18,10 +18,10 @@
 #       url: "news"
 
 - title: 자료구조
-  url: data-structure
+  url: docs/data-structure/concept
   links:
-    - title: 자료구조란
-      url: "docs/data-structure/concept"
+    # - title: 자료구조란
+    #   url: "docs/data-structure/concept"
       # children:
       #   - title: 자료구조의 종류
       #   - url: "docs/data-structure/concept#자료구조의-종류"
@@ -55,10 +55,10 @@
     #   url: "data-structure/getting-started#customization"
 
 - title: 알고리즘
-  url: algorithm
+  url: "docs/algorithm/concept"
   links:
-    - title: 알고리즘이란
-      url: "docs/algorithm/concept"
+    # - title: 알고리즘이란
+    #   url: "docs/algorithm/concept"
     # - title: 정렬
     #   url: "docs/algorithm/getting-started#getting-started"
     # - title: 탐색
@@ -82,6 +82,11 @@
     # - title: 백트래킹
     #   url: "docs/algorithm/getting-started#customization"
 
+- title: 개념사전
+  url: dictionary
+  links:
+    - title: 메모리 영역
+      url: "docs/dictionary/memory-area"
 
 # - title: "Extras"
 #   url: "docs/extras"
