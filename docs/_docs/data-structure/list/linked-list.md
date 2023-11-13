@@ -169,6 +169,126 @@ NewNode = SLL_CreateNode( 119 ); // 자유 저장소에 또 다른 노드 생성
 SLL_AppendNode( &List, NewNode ); // 생성한 노드를 List에 추가
 {% endhighlight %}
 
+
+## 노드 탐색 연산
+
+배열에서는 어떤 위치에 있는 요소를 취하고 싶을 때 해당 요소의 첨자를 입력하면 바로 해당 요소에 접근할 수 있는 반면 링크드 리스트는 헤드부터 시작해서 다음 노드에 대한 포인터를 노드의 개수만큼 거쳐야만 원하는 요소에 접근할 수 있다. 찾고자 하는 요소가 N번째에 있다면 N-1개의 노드를 거쳐야 한다.<br/>
+다음은 링크드 리스트 내에서 임의의 위치에 있는 노드를 찾아 반환하는 SLL_GetNodeAt 함수는 다음과 같이 구현한다.
+{% highlight c++ %}
+Node* SLL_GetNodeAt(Node* Head, int Location) 
+{
+  Node* Current = Head;
+  while (Current != NULL && (--Location) >= 0)
+  {
+    Current = Current->NextNode;
+  }
+  return Current;
+}
+{% endhighlight %}
+
+함수의 사용은 다음과 같다.
+
+{% highlight c++ %}
+Node* List = NULL;
+Node* MyNode = NULL;
+
+SLL_ApendNode( &List, SLL_CreateNode( 117 ) ); // 노드를 생성하여 List에 추가
+SLL_ApendNode( &List, SLL_CreateNode( 119 ) ); // 노드를 생성하여 List에 추가
+
+MyNode = SLL_GetNodeAt( List, 1 ); // 두 번째 노드의 주소를 MyNode에 저장
+printf( "%d/n", MyNode->Data ); // 119를 출력
+{% endhighlight %}
+
+## 노드 삭제 연산
+
+노드 삭제 연산은 링크드 리스트 내 임의의 노드를 제거하는 연산이다. 삭제하고자 하는 노드를 찾은 후 해당 노드의 다음 노드를 이전 노드의 NextNode 포인터에 연결하면 그 노드를 삭제할 수 있다.
+![Node Img]({{ site.baseurl }}/assets/img/structure/list/node_remove.png)
+
+노드 삭제 연산을 수행하는 SLL_RemoveNode() 함수는 다음과 같이 구현한다.
+
+{% highlight c++ %}
+void SLL_RemoveNode(Node** Head, Node* Remove)
+{
+  if (*Head == Remove)
+  {
+    *Head = Remove->NextNode;
+  }
+  else
+  {
+    Node* Current = *Head;
+    while ( Current != NULL && Current->NextNode != Remove )
+    {
+      Current = Current->NextNode;
+    }
+    if ( Current != NULL )
+    {
+      Current->NewtNode = Remove->NextNode;
+    }
+  }
+}
+{% endhighlight %}
+
+삭제한 노드를 다른곳에서 사용하지 않을 예정이라면 여기에서 파괴해도 된다. 앞서 구현한 SLL_DestroyNode() 함수를 이용하여 삭제한 노드를 소멸시킨다. SLL_RemoveNode() 함수의 호출 예는 다음과 같다.
+
+{% highlight c++ %}
+Node* List = NULL;
+Node* MyNode = NULL;
+
+// 노드를 생성하여 List에 추가
+SLL_ApendNode( &List, SLL_CreateNode( 117 ) );
+SLL_ApendNode( &List, SLL_CreateNode( 119 ) );
+SLL_ApendNode( &List, SLL_CreateNode( 212 ) );
+
+MyNode = SLL_GetNodeAt( List, 1 ); // 두 번째 노드의 주소를 MyNode에 저장
+printf( "%d/n", MyNode ); // 119를 출력
+
+SLL_RemoveNode( &List, MyNode ); // 두 번째 노드 제거
+SLL_DestroyNode( MyNode ); // 링크드 리스트에서 제거한 노드를 메모리에서 완전히 소멸
+{% endhighlight %}
+
+## 노드 삽입 연산
+노드 삽입은 노드와 노드 사이에 새로운 노드를 끼워 넣는 연산이다.
+![Node Img]({{ site.baseurl }}/assets/img/structure/list/node_insert.png)
+
+노드 삽입을 수행하는 SLL_InsertAfter() 함수는 다음과 같이 구현한다.
+
+{% highlight c++ %}
+void SLL_InsertAfter(Node* Current, Node* NewNOde)
+{
+  NewNode->NextNode = Current->NextNode;
+  Current->NextNode
+}
+{% endhighlight %}
+
+## 노드 개수 세기 연산
+노드의 개수를 세는 연산(리스트의 길이를 재는 연산)은 리스트 내에 존재하는 노드의 개수를 세어 그 결과를 반환한다. 구현은 다음과 같다.
+
+{% highlight c++ %}
+int SLL_GetNodeCount(Node* Head)
+{
+  int Count = 0;
+  Node* Current = Head;
+
+  while ( Current != NULL )
+  {
+    Current = Current->NextNode;
+    Count++;
+  }
+  return Count;
+}
+{% endhighlight %}
+
+## 링크드 리스트의 장단점
+링크드 리스트는 노드의 추가, 삽입, 삭제 연산은 빠르지만 특정 위치에 있는 노드에 접근하는 연산은 느리다. 따라서 링크드 리스트는 **레코드의 추가, 삽입, 삭제가 잦지만 조회는 드문 곳에서 사용하기 적합**하다. 예를 들어 데이터베이스에서 조회해온 레코드를 순차적으로 다루는데 제격이다.
+
+### 장점
+- 새로운 노드의 추가, 삽입, 삭제가 쉽고 빠르다. 반면에 배열은 새로운 요소를 삽입하거나 기존 요소를 제거하기가 어렵다.
+- 현재 노드의 다음 노드를 얻어오는 연산에 대해서는 비용이 발생하지 않는다.
+
+### 단점
+- 다음 노드를 가리키려는 포인터 때문에 각 노드마다 추가적인 메모리(32비트 시스템에서는 4바이트, 64비트 시스템에서는 8바이트)가 필요하다.
+- 특정 위치에 있는 노드에 접근하기 위한 비용이 크며 접근하기까지 시간도 많이 소요된다. 가령 N번째 위치에 있는 노드에 접근하려면 N회의 노드 탐색 루프를 실행해야 해당 위치의 노드에 접근할 수 있다. 반면 배열은 상수 시간에 노드를 얻을 수 있다. (배열에서 노드 위치는 '첨자 X 노드 크기'로 계산)
+  
 <!-- ### Search
 
 The entire site, including posts and documentation, is indexed and then available
