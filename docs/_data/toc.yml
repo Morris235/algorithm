@@ -41,6 +41,8 @@
     #       url: "data-structure/list-adt#list-and-array"
     - title: 링크드 리스트
       url: "docs/data-structure/list/linked-list"
+    - title: 더블 링크드 리스트
+      url: "docs/data-structure/list/doubly-linked-list"
     # - title: 더블 링크드 리스트
     #   url: "data-structure/getting-started#customization"
     # - title: 환형 링크드 리스트
