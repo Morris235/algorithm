@@ -12,7 +12,7 @@ public class Main {
         Map<Character, Integer> map = new HashMap<>();
         
         String word = br.readLine().toUpperCase();
-        
+        단어공부
         for (int i = 0; i < word.length(); i++) {
             map.put(word.charAt(i), map.getOrDefault(word.charAt(i), 0) + 1);
         }
