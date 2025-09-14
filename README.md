@@ -79,15 +79,14 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 ## 문제
 
-<details>
-<summary>sorting</summary>
+### sorting
 
 <details>
 <summary>BOJ 단어정렬</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
-| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_1181_단어정렬/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1181) |
+| 2025-09-14 13:16:20 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_1181_단어정렬/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1181) |
 </details>
 
 <details>
@@ -95,7 +94,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
-| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2751_단어정렬2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2751) |
+| 2025-09-14 13:16:32 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2751_단어정렬2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2751) |
 </details>
 
 <details>
@@ -103,23 +102,18 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
-| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2750) |
+| 2025-09-14 13:16:10 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2750) |
 </details>
 
-</details>
-
-<details>
-<summary>string</summary>
+### string
 
 <details>
 <summary>BOJ 단어공부</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
-| 2025-09-14 13:12 | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
-| 2025-09-14 13:12 | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
-</details>
-
+| 2025-09-14 13:12:13 | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
+| 2025-09-14 13:12:19 | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
 </details>
 
 <!-- AUTO_INDEX:END -->

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import argparse, json, os, re
+import subprocess
 from datetime import datetime
 from textwrap import dedent
 
@@ -90,7 +91,8 @@ def get_created_timestamp(file_path: str):
     return ts
 
 def format_timestamp(ts: float) -> str:
-    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M")
+    # 분 단위 반올림으로 동일하게 보이는 문제를 피하기 위해 초 단위까지 표기
+    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
 
 def scan_problem_directories(root: str):
     """문제 디렉토리(내부에 Solution*.java 존재)를 스캔하여 메타를 반환.
@@ -121,7 +123,8 @@ def scan_problem_directories(root: str):
             for f in solution_files:
                 abs_path = os.path.join(dirpath, f)
                 rel_path = os.path.relpath(abs_path, root)
-                updated_ts = os.stat(abs_path).st_mtime
+                st = os.stat(abs_path)
+                updated_ts = st.st_mtime
                 updated_str = format_timestamp(updated_ts)
                 files_meta.append({
                     "name": f,
@@ -142,6 +145,24 @@ def scan_problem_directories(root: str):
             })
     return results
 
+def get_git_last_commit_ts(repo_root: str, rel_path: str):
+    """파일의 마지막 커밋 unix timestamp를 반환. 실패 시 None."""
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ct", "--", rel_path],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=3,
+        )
+        if result.returncode == 0:
+            s = result.stdout.strip()
+            if s:
+                return float(s)
+    except Exception:
+        pass
+    return None
+
 AUTO_START = "<!-- AUTO_INDEX:START -->"
 AUTO_END = "<!-- AUTO_INDEX:END -->"
 
@@ -161,8 +182,7 @@ def build_root_index_markdown(root: str) -> str:
     lines.append("## 문제")
     lines.append("")
     for category in sorted(category_to_items.keys(), key=lambda s: (s or "").lower()):
-        lines.append("<details>")
-        lines.append(f"<summary>{category}</summary>")
+        lines.append(f"### {category}")
         lines.append("")
         for p in category_to_items[category]:
             display = (f"{p['site']} {p['title']}" if p['site'] or p['title'] else p['dirname']).strip()
@@ -177,8 +197,6 @@ def build_root_index_markdown(root: str) -> str:
                 lines.append(f"| {f['updated_str']} | [{f['name']}]({file_link}) | [문제 링크]({problem_link}) |")
             lines.append("</details>")
             lines.append("")
-        lines.append("</details>")
-        lines.append("")
     lines.append(AUTO_END)
     return "\n".join(lines)
 
