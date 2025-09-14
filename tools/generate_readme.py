@@ -92,6 +92,116 @@ def get_created_timestamp(file_path: str):
 def format_timestamp(ts: float) -> str:
     return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M")
 
+def scan_problem_directories(root: str):
+    """문제 디렉토리(내부에 Solution*.java 존재)를 스캔하여 메타를 반환.
+    반환 형태: [ { 'dir': abs_path, 'dirname': name, 'category': category, 'site': site, 'num': num, 'title': title, 'link': link, 'files': [ { 'name', 'abs', 'rel', 'updated_ts', 'updated_str' } ] } ]
+    """
+    results = []
+    candidate_roots = [
+        os.path.join(root, "src", "problems"),
+        os.path.join(root, "problems"),
+    ]
+    for base in candidate_roots:
+        if not os.path.isdir(base):
+            continue
+        for dirpath, _, filenames in os.walk(base):
+            solution_files = [
+                f for f in filenames
+                if f.startswith("Solution") and f.endswith(".java")
+            ]
+            if not solution_files:
+                continue
+            # 문제 디렉토리로 간주
+            dirname = os.path.basename(dirpath)
+            site, num, title = parse_dirname(dirname)
+            link = compute_link(site, num, dirpath, "https://www.acmicpc.net/problem")
+            parent = os.path.basename(os.path.dirname(dirpath))
+            category = parent
+            files_meta = []
+            for f in solution_files:
+                abs_path = os.path.join(dirpath, f)
+                rel_path = os.path.relpath(abs_path, root)
+                updated_ts = os.stat(abs_path).st_mtime
+                updated_str = format_timestamp(updated_ts)
+                files_meta.append({
+                    "name": f,
+                    "abs": abs_path,
+                    "rel": rel_path,
+                    "updated_ts": updated_ts,
+                    "updated_str": updated_str,
+                })
+            results.append({
+                "dir": dirpath,
+                "dirname": dirname,
+                "category": category,
+                "site": site,
+                "num": num,
+                "title": title,
+                "link": link,
+                "files": files_meta,
+            })
+    return results
+
+AUTO_START = "<!-- AUTO_INDEX:START -->"
+AUTO_END = "<!-- AUTO_INDEX:END -->"
+
+def build_root_index_markdown(root: str) -> str:
+    problems = scan_problem_directories(root)
+    # 카테고리별 그룹
+    category_to_items = {}
+    for p in problems:
+        category_to_items.setdefault(p["category"], []).append(p)
+    # 정렬: 카테고리명, 문제표시명
+    for cat, items in category_to_items.items():
+        items.sort(key=lambda x: (x["title"] or x["dirname"]).lower())
+
+    lines = []
+    lines.append(AUTO_START)
+    lines.append("")
+    lines.append("## 문제")
+    lines.append("")
+    for category in sorted(category_to_items.keys(), key=lambda s: (s or "").lower()):
+        lines.append("<details>")
+        lines.append(f"<summary>{category}</summary>")
+        lines.append("")
+        for p in category_to_items[category]:
+            display = (f"{p['site']} {p['title']}" if p['site'] or p['title'] else p['dirname']).strip()
+            lines.append("<details>")
+            lines.append(f"<summary>{display}</summary>")
+            lines.append("")
+            lines.append("| 업데이트 | 파일 이름 | 문제 링크 |")
+            lines.append("|---|---|---|")
+            for f in sorted(p["files"], key=lambda x: x["updated_ts"]):
+                file_link = f"./{f['rel']}"
+                problem_link = p["link"]
+                lines.append(f"| {f['updated_str']} | [{f['name']}]({file_link}) | [문제 링크]({problem_link}) |")
+            lines.append("</details>")
+            lines.append("")
+        lines.append("</details>")
+        lines.append("")
+    lines.append(AUTO_END)
+    return "\n".join(lines)
+
+def update_root_readme(root: str):
+    readme_path = os.path.join(root, "README.md")
+    new_block = build_root_index_markdown(root)
+    if os.path.exists(readme_path):
+        with open(readme_path, "r", encoding="utf-8") as fp:
+            content = fp.read()
+        if AUTO_START in content and AUTO_END in content:
+            before = content.split(AUTO_START)[0]
+            after = content.split(AUTO_END)[-1]
+            updated = before.rstrip() + "\n\n" + new_block + "\n" + after.lstrip()
+        else:
+            # 말미에 자동 섹션 추가
+            sep = "\n\n---\n\n" if content and not content.endswith("\n\n") else ""
+            updated = content + sep + new_block + "\n"
+        with open(readme_path, "w", encoding="utf-8") as fp:
+            fp.write(updated)
+    else:
+        with open(readme_path, "w", encoding="utf-8") as fp:
+            fp.write(new_block + "\n")
+
 def main():
     ap = argparse.ArgumentParser(description="Generate README.md for a BOJ problem folder")
     ap.add_argument("num", help="문제 번호 (예: 1157)")
@@ -221,6 +331,13 @@ def main():
     with open(out_path, "w", encoding="utf-8") as fp:
         fp.write(md)
     print(f"✅ README.md 생성 완료: {out_path}")
+
+    # 루트 README 자동 인덱스 업데이트
+    try:
+        update_root_readme(proj_root)
+        print("🧭 루트 README 인덱스 갱신 완료")
+    except Exception as e:
+        print(f"⚠️ 루트 README 인덱스 갱신 실패: {e}")
 
 if __name__ == "__main__":
     main()

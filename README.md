@@ -71,3 +71,55 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 - 링크 자동화: 사이트/경로를 기반으로 BOJ/Programmers/LeetCode 링크를 추론합니다.
 - 표의 파일명은 상대 링크(`[파일](./파일)`)로 생성되어 GitHub에서 바로 열 수 있습니다.
+
+
+---
+
+<!-- AUTO_INDEX:START -->
+
+## 문제
+
+<details>
+<summary>sorting</summary>
+
+<details>
+<summary>BOJ 단어정렬</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_1181_단어정렬/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1181) |
+</details>
+
+<details>
+<summary>BOJ 단어정렬2</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2751_단어정렬2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2751) |
+</details>
+
+<details>
+<summary>BOJ 수정렬하기</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| 2025-09-14 13:16 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2750) |
+</details>
+
+</details>
+
+<details>
+<summary>string</summary>
+
+<details>
+<summary>BOJ 단어공부</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| 2025-09-14 13:12 | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
+| 2025-09-14 13:12 | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
+</details>
+
+</details>
+
+<!-- AUTO_INDEX:END -->
