@@ -195,7 +195,12 @@ def build_root_index_markdown(root: str) -> str:
             for f in sorted(p["files"], key=lambda x: x["updated_ts"]):
                 file_link = f"./{f['rel']}"
                 problem_link = p["link"]
-                lines.append(f"| {f['updated_str']} | [{f['name']}]({file_link}) | [문제 링크]({problem_link}) |")
+                problem_readme_rel = os.path.relpath(os.path.join(p["dir"], "README.md"), root)
+                if os.path.exists(os.path.join(p["dir"], "README.md")):
+                    updated_cell = f"[{f['updated_str']}](./{problem_readme_rel})"
+                else:
+                    updated_cell = f"[{f['updated_str']}](./{os.path.relpath(p['dir'], root)})"
+                lines.append(f"| {updated_cell} | [{f['name']}]({file_link}) | [문제 링크]({problem_link}) |")
             lines.append("</details>")
             lines.append("")
         lines.append("</details>")
