@@ -8,13 +8,10 @@
 
 ## 풀이 파일 & 성능
 
-
-| 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 공간복잡도 | 핵심 아이디어 |
-|---|---:|---:|---|---|---|
-| `SolutionHashMap.java` | 36864 KB | 340 ms | O(n) | O(k) (최대 서로 다른 문자 수) | `HashMap` 카운팅 + `Collections.max` |
-| `SolutionArray.java`   | 21184 KB | 260 ms | O(n) | O(1) (=26) | `int[26]` 카운팅, 1패스에서 최댓값/동률 처리 |
-
-> n: 문자열 길이, k: 서로 다른 문자 수(알파벳 한정이면 ≤ 26)
+| 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |
+|---|---:|---:|---|---|
+| `SolutionHashMap.java` | 36864 KB | 340 ms | O(n) | `HashMap` 카운팅 + `Collections.max` |
+| `SolutionArray.java`   | 21184 KB | 260 ms | O(n) | `int[26]` 카운팅, 1패스에서 최댓값/동률 처리 |
 
 ---
 
