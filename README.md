@@ -79,7 +79,8 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 ## 문제
 
-### sorting
+<details>
+<summary><strong>sorting</strong></summary>
 
 <details>
 <summary>BOJ 단어정렬</summary>
@@ -105,7 +106,10 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | 2025-09-14 13:16:10 | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2750) |
 </details>
 
-### string
+</details>
+
+<details>
+<summary><strong>string</strong></summary>
 
 <details>
 <summary>BOJ 단어공부</summary>
@@ -114,6 +118,8 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 |---|---|---|
 | 2025-09-14 13:12:13 | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
 | 2025-09-14 13:12:19 | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
+</details>
+
 </details>
 
 <!-- AUTO_INDEX:END -->

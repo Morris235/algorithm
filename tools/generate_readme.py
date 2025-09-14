@@ -182,7 +182,8 @@ def build_root_index_markdown(root: str) -> str:
     lines.append("## 문제")
     lines.append("")
     for category in sorted(category_to_items.keys(), key=lambda s: (s or "").lower()):
-        lines.append(f"### {category}")
+        lines.append("<details>")
+        lines.append(f"<summary><strong>{category}</strong></summary>")
         lines.append("")
         for p in category_to_items[category]:
             display = (f"{p['site']} {p['title']}" if p['site'] or p['title'] else p['dirname']).strip()
@@ -197,6 +198,8 @@ def build_root_index_markdown(root: str) -> str:
                 lines.append(f"| {f['updated_str']} | [{f['name']}]({file_link}) | [문제 링크]({problem_link}) |")
             lines.append("</details>")
             lines.append("")
+        lines.append("</details>")
+        lines.append("")
     lines.append(AUTO_END)
     return "\n".join(lines)
 
