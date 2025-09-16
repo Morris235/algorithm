@@ -186,7 +186,16 @@ def build_root_index_markdown(root: str) -> str:
         lines.append(f"<summary><strong>{category}</strong></summary>")
         lines.append("")
         for p in category_to_items[category]:
-            display = (f"{p['site']} {p['title']}" if p['site'] or p['title'] else p['dirname']).strip()
+            # 표시명: SITE NUM TITLE 우선, 없으면 NUM TITLE, 최후엔 dirname
+            title_part = (p['title'] or '').strip()
+            if p['site'] and p['num']:
+                display = f"{p['site']} {p['num']} {title_part}".strip()
+            elif p['num']:
+                display = f"{p['num']} {title_part}".strip()
+            elif p['site']:
+                display = f"{p['site']} {title_part}".strip() or p['dirname']
+            else:
+                display = (title_part or p['dirname']).strip()
             lines.append("<details>")
             lines.append(f"<summary>{display}</summary>")
             lines.append("")

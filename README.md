@@ -80,10 +80,23 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 ## 문제
 
 <details>
+<summary><strong>dfs</strong></summary>
+
+<details>
+<summary>BOJ 6443 애너그램</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-16 12:04:01](./src/problems/baekjoon/dfs/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/dfs/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
+</details>
+
+</details>
+
+<details>
 <summary><strong>sorting</strong></summary>
 
 <details>
-<summary>BOJ 단어정렬</summary>
+<summary>BOJ 1181 단어정렬</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
@@ -91,7 +104,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 </details>
 
 <details>
-<summary>BOJ 단어정렬2</summary>
+<summary>BOJ 2751 단어정렬2</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
@@ -99,7 +112,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 </details>
 
 <details>
-<summary>BOJ 수정렬하기</summary>
+<summary>BOJ 2750 수정렬하기</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
@@ -112,7 +125,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 <summary><strong>string</strong></summary>
 
 <details>
-<summary>BOJ 단어공부</summary>
+<summary>BOJ 1157 단어공부</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
@@ -121,15 +134,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 </details>
 
 <details>
-<summary>BOJ 애너그램</summary>
-
-| 업데이트 | 파일 이름 | 문제 링크 |
-|---|---|---|
-| [2025-09-16 12:04:01](./src/problems/baekjoon/string/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/string/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
-</details>
-
-<details>
-<summary>BOJ 애너그램</summary>
+<summary>BOJ 6996 애너그램</summary>
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
