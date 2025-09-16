@@ -120,6 +120,22 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | [2025-09-14 13:12:19](./src/problems/baekjoon/string/BOJ_1157_단어공부/README.md) | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
 </details>
 
+<details>
+<summary>BOJ 애너그램</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-16 12:04:01](./src/problems/baekjoon/string/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/string/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
+</details>
+
+<details>
+<summary>BOJ 애너그램</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-16 15:29:39](./src/problems/baekjoon/string/BOJ_6996_애너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_6996_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6996) |
+</details>
+
 </details>
 
 <!-- AUTO_INDEX:END -->
