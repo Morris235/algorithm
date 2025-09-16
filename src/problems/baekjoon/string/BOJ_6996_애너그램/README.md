@@ -16,7 +16,7 @@
 
 | 작성일 | 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |
 |---|---|---:|---:|---|---|
-| 2025-09-16 15:25:27 | [`Solution.java`](./Solution.java) | 18592 KB | 200 ms | O(n) | 문자열을 문자로 변환후 정렬하여 Arrays.equals로 비교 |
+| 2025-09-16 15:25:27 | [`Solution.java`](./Solution.java) | 18592 KB | 200 ms | O(n log n) | 문자열을 문자로 변환후 정렬하여 Arrays.equals로 비교 |
 
 ---
 
