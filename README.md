@@ -141,6 +141,14 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | [2025-09-16 15:29:39](./src/problems/baekjoon/string/BOJ_6996_애너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_6996_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6996) |
 </details>
 
+<details>
+<summary>BOJ 1919 에너그램</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-17 19:13:28](./src/problems/baekjoon/string/BOJ_1919_에너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_1919_에너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1919) |
+</details>
+
 </details>
 
 <!-- AUTO_INDEX:END -->
