@@ -316,56 +316,152 @@ def main():
         if perf_block:
             perf_block = f"> 📊 성능 개선:  \n{perf_block}"
 
-    # README.md 내용 생성
-    title_line = f"# {site} {num} {problem_title}".strip() if site or num else f"# {problem_title}"
-    md = dedent(f"""
-    {title_line}
-
-    - **문제 링크:** [{link}]({link})  
-    - **분류:** {args.tags}
-    - **요약:** {args.summary}
-
-    --- 
-
-    ## 입출력 예시
-    입력: {args.input}  
-    출력: {args.output}
-
-    ---
-
-    ## 풀이 파일 & 성능
-
-    | 작성일 | 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |
-    |---|---|---:|---:|---|---|
-    """).lstrip()
-
-    md += "\n".join(rows if rows else ["| - | (풀이 파일 없음) | | | | |"])
-    if perf_block:
-        md += "\n\n" + perf_block
-
-    md += dedent("""
-
-    ---
-
-    ## 접근 방식
-    - 각 풀이 파일에 주석으로 핵심 아이디어를 기록.
-    - 표의 ‘핵심 아이디어’ 열을 요약으로 사용.
-
-    ---
-
-    ## 복수 풀이 비교
-    - 
-
-    ---
-
-    ## 메모
-    - 
-    """)
-
     out_path = os.path.join(problem_dir, "README.md")
-    with open(out_path, "w", encoding="utf-8") as fp:
-        fp.write(md)
-    print(f"✅ README.md 생성 완료: {out_path}")
+
+    def build_table_rows_with_preserve(existing_rows_by_file):
+        new_rows, mems_local, times_local = [], [], []
+        for e in entries:
+            mem, tm = e["mem"], e["tm"]
+            # 이전 표가 있으면 메모리/시간/복잡도/아이디어는 보존
+            old = existing_rows_by_file.get(e["file"], {}) if existing_rows_by_file else {}
+            mem_cell = old.get("mem") if old.get("mem") is not None else (f"{mem:,} KB" if isinstance(mem, int) else "")
+            time_cell = old.get("time") if old.get("time") is not None else (f"{tm:,} ms" if isinstance(tm, int) else "")
+            tc_cell = old.get("tc") if old.get("tc") is not None else e["tc"]
+            idea_cell = old.get("idea") if old.get("idea") is not None else e["idea"]
+            file_cell = f"[`{e['file']}`](./{e['file']})"
+            new_rows.append(
+                f"| {e['created_str']} | {file_cell} | {mem_cell} | {time_cell} | {tc_cell} | {idea_cell} |"
+            )
+            if isinstance(mem, int): mems_local.append(mem)
+            if isinstance(tm, int): times_local.append(tm)
+        return new_rows, mems_local, times_local
+
+    def parse_existing_table(content: str):
+        lines_txt = content.splitlines()
+        # 찾기: 표 헤더 시작
+        header_idx = None
+        for i, ln in enumerate(lines_txt):
+            if ln.strip().startswith("| 작성일 |") and "풀이 파일" in ln:
+                header_idx = i
+                break
+        if header_idx is None:
+            return None, None, None, None
+        # 정렬선 다음부터 데이터 시작
+        if header_idx + 1 < len(lines_txt) and lines_txt[header_idx+1].strip().startswith("|"):
+            data_start = header_idx + 2
+        else:
+            data_start = header_idx + 1
+        data_end = data_start
+        while data_end < len(lines_txt) and lines_txt[data_end].strip().startswith("|"):
+            data_end += 1
+        table_lines = lines_txt[data_start:data_end]
+        # 파일명 → 기존 셀 매핑
+        existing = {}
+        for row in table_lines:
+            parts = [p.strip() for p in row.strip().strip('|').split('|')]
+            if len(parts) < 6:
+                continue
+            # parts: [date, file_link, mem, time, tc, idea]
+            file_label = parts[1]
+            m = re.search(r"\[([^\]]+)\]", file_label)
+            # 링크 텍스트는 보통 `파일명` 형태이므로 백틱 제거하여 파일명으로 정규화
+            fname = (m.group(1).strip('`') if m else file_label).strip('`')
+            existing[fname] = {
+                "mem": parts[2] if parts[2] != '' else None,
+                "time": parts[3] if parts[3] != '' else None,
+                "tc": parts[4] if parts[4] != '' else None,
+                "idea": parts[5] if parts[5] != '' else None,
+            }
+        return lines_txt, header_idx, data_start, data_end, existing
+
+    if os.path.exists(out_path):
+        # 기존 README가 있으면 표만 업데이트하고 나머지는 보존
+        with open(out_path, "r", encoding="utf-8") as fp:
+            content = fp.read()
+        parsed = parse_existing_table(content)
+        if parsed and parsed[0] is not None:
+            lines_txt, header_idx, data_start, data_end, existing = parsed
+            new_rows, mems_local, times_local = build_table_rows_with_preserve(existing)
+            # 표 헤더는 그대로 두고 데이터 구간만 교체
+            updated_lines = lines_txt[:data_start] + new_rows + lines_txt[data_end:]
+            updated_content = "\n".join(updated_lines) + ("\n" if not lines_txt[-1].endswith("\n") else "")
+            content = updated_content
+        else:
+            # 표가 없으면 섹션을 추가
+            new_rows, mems_local, times_local = build_table_rows_with_preserve({})
+            table_block = "\n".join([
+                "## 풀이 파일 & 성능",
+                "",
+                "| 작성일 | 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |",
+                "|---|---|---:|---:|---|---|",
+                *new_rows,
+                "",
+            ])
+            # 적절한 위치(파일 끝)에 추가
+            content = content.rstrip() + "\n\n" + table_block + "\n"
+        # 복수 풀이 섹션: 2개 이상일 때 없으면 추가, 있으면 유지
+        if len(entries) >= 2 and ("## 복수 풀이 비교" not in content):
+            content = content.rstrip() + "\n\n---\n\n## 복수 풀이 비교\n\n"
+        with open(out_path, "w", encoding="utf-8") as fp:
+            fp.write(content)
+        print(f"✅ README.md 표 업데이트 완료: {out_path}")
+    else:
+        # 새로 생성
+        title_line = f"# {site} {num} {problem_title}".strip() if site or num else f"# {problem_title}"
+        md = dedent(f"""
+        {title_line}
+
+        - **문제 링크:** [{link}]({link})  
+        - **분류:** {args.tags}
+        - **요약:** {args.summary}
+
+        --- 
+
+        ## 입출력 예시
+        입력: {args.input}  
+        출력: {args.output}
+
+        ---
+
+        ## 풀이 파일 & 성능
+
+        | 작성일 | 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |
+        |---|---|---:|---:|---|---|
+        """).lstrip()
+
+        md += "\n".join(rows if rows else ["| - | (풀이 파일 없음) | | | | |"])
+        if perf_block:
+            md += "\n\n" + perf_block
+
+        md += dedent("""
+
+        ---
+
+        ## 접근 방식
+        - 각 풀이 파일에 주석으로 핵심 아이디어를 기록.
+        - 표의 ‘핵심 아이디어’ 열을 요약으로 사용.
+        """)
+
+        if len(entries) >= 2:
+            md += dedent("""
+
+            ---
+
+            ## 복수 풀이 비교
+            - 
+            """)
+
+        md += dedent("""
+
+        ---
+
+        ## 메모
+        - 
+        """)
+
+        with open(out_path, "w", encoding="utf-8") as fp:
+            fp.write(md)
+        print(f"✅ README.md 생성 완료: {out_path}")
 
     # 루트 README 자동 인덱스 업데이트
     try:
