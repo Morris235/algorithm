@@ -338,24 +338,39 @@ def main():
 
     def parse_existing_table(content: str):
         lines_txt = content.splitlines()
-        # 찾기: 표 헤더 시작
-        header_idx = None
+        # 1) 우선 섹션 헤더("## 풀이 파일 & 성능") 기준으로 탐색
+        sec_idx = None
         for i, ln in enumerate(lines_txt):
-            if ln.strip().startswith("| 작성일 |") and "풀이 파일" in ln:
+            if ln.strip().startswith("## ") and "풀이 파일" in ln and "성능" in ln:
+                sec_idx = i
+                break
+        search_start = 0 if sec_idx is None else sec_idx + 1
+
+        # 2) 헤더 행 탐색: | 작성일 ... | 풀이 파일 ... 형식 (여유있는 매칭)
+        header_idx = None
+        header_regex = re.compile(r"^\|\s*작성일\b.*\b풀이\s*파일\b.*\|\s*$")
+        for i in range(search_start, len(lines_txt)):
+            ln = lines_txt[i].rstrip()
+            if header_regex.match(ln):
                 header_idx = i
                 break
         if header_idx is None:
-            return None, None, None, None
-        # 정렬선 다음부터 데이터 시작
-        if header_idx + 1 < len(lines_txt) and lines_txt[header_idx+1].strip().startswith("|"):
-            data_start = header_idx + 2
-        else:
-            data_start = header_idx + 1
+            return None, None, None, None, None
+
+        # 3) 정렬선(---) 다음부터 데이터 시작
+        data_start = header_idx + 1
+        if data_start < len(lines_txt) and lines_txt[data_start].lstrip().startswith("|"):
+            # 보통 정렬선
+            data_start += 1
         data_end = data_start
-        while data_end < len(lines_txt) and lines_txt[data_end].strip().startswith("|"):
+        while data_end < len(lines_txt):
+            s = lines_txt[data_end].strip()
+            if not s.startswith("|"):
+                break
             data_end += 1
+
         table_lines = lines_txt[data_start:data_end]
-        # 파일명 → 기존 셀 매핑
+        # 4) 파일명 → 기존 셀 매핑
         existing = {}
         for row in table_lines:
             parts = [p.strip() for p in row.strip().strip('|').split('|')]
@@ -364,7 +379,6 @@ def main():
             # parts: [date, file_link, mem, time, tc, idea]
             file_label = parts[1]
             m = re.search(r"\[([^\]]+)\]", file_label)
-            # 링크 텍스트는 보통 `파일명` 형태이므로 백틱 제거하여 파일명으로 정규화
             fname = (m.group(1).strip('`') if m else file_label).strip('`')
             existing[fname] = {
                 "mem": parts[2] if parts[2] != '' else None,
@@ -373,6 +387,20 @@ def main():
                 "idea": parts[5] if parts[5] != '' else None,
             }
         return lines_txt, header_idx, data_start, data_end, existing
+
+    def dedupe_tables(content: str) -> str:
+        # 중복된 "## 풀이 파일 & 성능" 표가 여러 개 있는 경우 첫 번째만 남기고 제거
+        pattern = re.compile(r"(?ms)^##\s+풀이 파일\s*&\s*성능\s*\n(?:.*?\n)*?(?=^##\s|\Z)")
+        matches = list(pattern.finditer(content))
+        if len(matches) <= 1:
+            return content
+        # keep first, remove others
+        first = matches[0]
+        pieces = [content[:first.end()]]
+        last_end = matches[-1].end()
+        # append everything after the last duplicate block
+        pieces.append(content[last_end:])
+        return "".join(pieces)
 
     if os.path.exists(out_path):
         # 기존 README가 있으면 표만 업데이트하고 나머지는 보존
@@ -384,7 +412,9 @@ def main():
             new_rows, mems_local, times_local = build_table_rows_with_preserve(existing)
             # 표 헤더는 그대로 두고 데이터 구간만 교체
             updated_lines = lines_txt[:data_start] + new_rows + lines_txt[data_end:]
-            updated_content = "\n".join(updated_lines) + ("\n" if not lines_txt[-1].endswith("\n") else "")
+            updated_content = "\n".join(updated_lines) + ("\n" if not content.endswith("\n") else "")
+            # 중복 섹션 제거
+            updated_content = dedupe_tables(updated_content)
             content = updated_content
         else:
             # 표가 없으면 섹션을 추가

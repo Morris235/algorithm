@@ -17,8 +17,8 @@
 
 | 작성일           | 풀이 파일                                        |   메모리 |   시간 | 시간복잡도 | 핵심 아이디어                                |
 | ---------------- | ------------------------------------------------ | -------: | -----: | ---------- | -------------------------------------------- |
-| 2025-09-14 13:02 | [`SolutionHashMap.java`](./SolutionHashMap.java) | 36864 KB | 340 ms | O(n)       | `HashMap` 카운팅 + `Collections.max`         |
-| 2025-09-14 13:09 | [`SolutionArray.java`](./SolutionArray.java)     | 21184 KB | 260 ms | O(n)       | `int[26]` 카운팅, 1패스에서 최댓값/동률 처리 |
+| 2025-09-14 13:02:12 | [`SolutionArray.java`](./SolutionArray.java) | 21184 KB | 260 ms | O(n) | `int[26]` 카운팅, 1패스에서 최댓값/동률 처리 |
+| 2025-09-14 13:09:06 | [`SolutionHashMap.java`](./SolutionHashMap.java) | 36864 KB | 340 ms | O(n) | `HashMap` 카운팅 + `Collections.max` |
 
 ---
 
@@ -48,11 +48,3 @@
 - 처음엔 HashMap 풀이로 통과 → 성능 개선 위해 Array 풀이 추가.
 - 배열 풀이로 메모리 절반, 실행시간 25% 단축됨.
 - 입력 데이터의 범위, 크기, 종류(숫자, 알파벳, 문자열 등)를 먼저 체크하고 그에 맞는 자료형을 선택해서 구현해야 했음..
-
-## 풀이 파일 & 성능
-
-| 작성일 | 풀이 파일 | 메모리 | 시간 | 시간복잡도 | 핵심 아이디어 |
-|---|---|---:|---:|---|---|
-| 2025-09-14 13:02:12 | [`SolutionArray.java`](./SolutionArray.java) | 0 KB | 0 ms | O(n) | TODO: 풀이 아이디어 요약 |
-| 2025-09-14 13:09:06 | [`SolutionHashMap.java`](./SolutionHashMap.java) | 0 KB | 0 ms | O(n) | TODO: 풀이 아이디어 요약 |
-
