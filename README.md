@@ -87,7 +87,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
-| [2025-09-16 12:04:01](./src/problems/baekjoon/dfs/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/dfs/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
+| [2025-09-18 10:42:56](./src/problems/baekjoon/dfs/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/dfs/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
 </details>
 
 </details>
@@ -147,6 +147,19 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
 | [2025-09-17 19:13:28](./src/problems/baekjoon/string/BOJ_1919_에너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_1919_에너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1919) |
+</details>
+
+</details>
+
+<details>
+<summary><strong>two_pointer</strong></summary>
+
+<details>
+<summary>BOJ 3273 두수의합</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-18 16:11:13](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/3273) |
 </details>
 
 </details>
