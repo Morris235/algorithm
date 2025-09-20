@@ -162,6 +162,14 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | [2025-09-18 16:11:13](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/3273) |
 </details>
 
+<details>
+<summary>BOJ 2003 수들의합2</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-20 14:31:24](./src/problems/baekjoon/two_pointer/BOJ_2003_수들의합2/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_2003_수들의합2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2003) |
+</details>
+
 </details>
 
 <!-- AUTO_INDEX:END -->
