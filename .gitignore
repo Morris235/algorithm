@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# IDE / Editor
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Java build outputs
+/out/
+bin/
+build/
+target/
+**/*.class
+
+# Logs
+*.log
+logs/
+
+# Temp files
+*.tmp
+*.temp
+
+# Python (tools/generate_readme.py)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / Misc
+Thumbs.db
+
