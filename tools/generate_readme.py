@@ -448,8 +448,13 @@ def main():
         --- 
 
         ## 입출력 예시
-        입력: {args.input}  
-        출력: {args.output}
+        ```
+        <입력>
+        {args.input}
+
+        <출력>
+        {args.output}
+        ```
 
         ---
 
