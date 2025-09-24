@@ -360,10 +360,9 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 <details>
 <summary>BOJ 6443 애너그램</summary>
 
-| 업데이트                                                             | 파일 이름                                                                    | 문제 링크                                         |
-| -------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-18 10:42:56](./src/problems/baekjoon/dfs/BOJ_6443_애너그램) | [Solution.java](./src/problems/baekjoon/dfs/BOJ_6443_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6443) |
-
 </details>
 
 </details>
@@ -374,28 +373,25 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 <details>
 <summary>BOJ 1181 단어정렬</summary>
 
-| 업데이트                                                                           | 파일 이름                                                                        | 문제 링크                                         |
-| ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-14 13:16:20](./src/problems/baekjoon/sorting/BOJ_1181_단어정렬/README.md) | [Solution.java](./src/problems/baekjoon/sorting/BOJ_1181_단어정렬/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1181) |
-
 </details>
 
 <details>
 <summary>BOJ 2751 단어정렬2</summary>
 
-| 업데이트                                                                  | 파일 이름                                                                         | 문제 링크                                         |
-| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-14 13:16:32](./src/problems/baekjoon/sorting/BOJ_2751_단어정렬2) | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2751_단어정렬2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2751) |
-
 </details>
 
 <details>
 <summary>BOJ 2750 수정렬하기</summary>
 
-| 업데이트                                                                   | 파일 이름                                                                          | 문제 링크                                         |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-14 13:16:10](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기) | [Solution.java](./src/problems/baekjoon/sorting/BOJ_2750_수정렬하기/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2750) |
-
 </details>
 
 </details>
@@ -406,29 +402,26 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 <details>
 <summary>BOJ 1157 단어공부</summary>
 
-| 업데이트                                                                          | 파일 이름                                                                                     | 문제 링크                                         |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| [2025-09-14 13:12:13](./src/problems/baekjoon/string/BOJ_1157_단어공부/README.md) | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java)     | [문제 링크](https://www.acmicpc.net/problem/1157) |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-14 13:12:13](./src/problems/baekjoon/string/BOJ_1157_단어공부/README.md) | [SolutionArray.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionArray.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
 | [2025-09-14 13:12:19](./src/problems/baekjoon/string/BOJ_1157_단어공부/README.md) | [SolutionHashMap.java](./src/problems/baekjoon/string/BOJ_1157_단어공부/SolutionHashMap.java) | [문제 링크](https://www.acmicpc.net/problem/1157) |
-
 </details>
 
 <details>
 <summary>BOJ 6996 애너그램</summary>
 
-| 업데이트                                                                          | 파일 이름                                                                       | 문제 링크                                         |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-16 15:29:39](./src/problems/baekjoon/string/BOJ_6996_애너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_6996_애너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/6996) |
-
 </details>
 
 <details>
 <summary>BOJ 1919 에너그램</summary>
 
-| 업데이트                                                                          | 파일 이름                                                                       | 문제 링크                                         |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-17 19:13:28](./src/problems/baekjoon/string/BOJ_1919_에너그램/README.md) | [Solution.java](./src/problems/baekjoon/string/BOJ_1919_에너그램/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1919) |
-
 </details>
 
 </details>
@@ -439,19 +432,33 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 <details>
 <summary>BOJ 3273 두수의합</summary>
 
-| 업데이트                                                                               | 파일 이름                                                                            | 문제 링크                                         |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-18 16:11:13](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_3273_두수의합/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/3273) |
+</details>
 
+<details>
+<summary>BOJ 1806 부분합</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-20 16:22:25](./src/problems/baekjoon/two_pointer/BOJ_1806_부분합) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_1806_부분합/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/1806) |
 </details>
 
 <details>
 <summary>BOJ 2003 수들의합2</summary>
 
-| 업데이트                                                                                | 파일 이름                                                                             | 문제 링크                                         |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
 | [2025-09-20 14:31:24](./src/problems/baekjoon/two_pointer/BOJ_2003_수들의합2/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_2003_수들의합2/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2003) |
+</details>
 
+<details>
+<summary>BOJ 2018 수들의합5</summary>
+
+| 업데이트 | 파일 이름 | 문제 링크 |
+|---|---|---|
+| [2025-09-24 14:25:17](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2018) |
 </details>
 
 </details>
