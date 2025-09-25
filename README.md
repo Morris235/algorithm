@@ -459,6 +459,7 @@ bash tools/genproblem.sh 2750 "정렬" "" "예시 입력" "예시 출력"
 | 업데이트 | 파일 이름 | 문제 링크 |
 |---|---|---|
 | [2025-09-24 14:25:17](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/README.md) | [Solution.java](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/Solution.java) | [문제 링크](https://www.acmicpc.net/problem/2018) |
+| [2025-09-25 11:40:22](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/README.md) | [SolutionReTry.java](./src/problems/baekjoon/two_pointer/BOJ_2018_수들의합5/SolutionReTry.java) | [문제 링크](https://www.acmicpc.net/problem/2018) |
 </details>
 
 </details>

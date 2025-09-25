@@ -3,7 +3,7 @@ package problems.baekjoon.two_pointer.BOJ_2018_수들의합5;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class ReTrySolution {
+public class SolutionReTry {
     public static void solved() throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
